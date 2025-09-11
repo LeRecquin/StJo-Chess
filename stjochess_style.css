@@ -47,6 +47,14 @@ p {
     margin-bottom: 50px;
 }
 
+#importantQuote {
+    font-size: 4vw;
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
 /* Classement */
 #classement {
     flex: 0.33;
@@ -71,6 +79,12 @@ p {
     border: 3px solid black;
     margin-right: 50px;
     margin-bottom: 50px;
+}
+
+#claText  {
+    color: black;
+    text-align: center;
+    margin: 20px;
 }
 
 /* Informations */
