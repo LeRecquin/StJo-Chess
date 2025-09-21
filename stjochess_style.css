@@ -55,6 +55,11 @@ p {
     text-align: center;
 }
 
+#desc {
+    font-size: 1.5vw;
+    text-align: center;
+}
+
 /* Classement */
 #classement {
     flex: 0.33;
