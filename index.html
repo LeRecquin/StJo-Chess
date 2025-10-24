@@ -43,12 +43,53 @@
             <h1 id="claTitle"> Classement </h1>
             <div>
                 <p id="claText">
-                    Nous rencontrons actuellement des problèmes avec l'affichage du classement, 
-                    mais ils seront réglés d'ici peu. Merci de patienter
+                    Le classement présent ci-dessous prend en compte un ELO propre à St-Jo Chess uniquement, 
+                    si vous remarquez un problème de données, merci de nous le signaler.
                 </p>
             </div>
-            <div id="rightClaImg">
-                <img src="Elements/Photos/Photo 4.jpeg" id="kingMoveImg">
+            <div class="row">
+
+                <div>
+                    <table id="classement">
+                        <thead>
+                            <tr>
+                                <th>Classement</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Classe</th>
+                                <th>ELO</th>
+                                <th>Identifiant St-Jo Chess</th>
+                                <th>ELO FIDE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    <script>
+                        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTbfd7L2_SRuHQcYSV_u2ZPEDqCVyFbsLFzE-mSpIaSQrcxd4p5k4WSbHWJEoTighkq8F_gQvuyHWeR/pub?gid=0&single=true&output=csv")
+                            .then(response => response.text())
+                            .then(csv => {
+                                const rows = csv.split("\n").map(r => r.split(","));
+                                const tbody = document.querySelector("#classement tbody");
+                                rows.slice(1).forEach(r => {
+                                    const tr = document.createElement("tr");
+                                    r.forEach(c => {
+                                        const td = document.createElement("td");
+                                        td.textContent = c;
+                                        tr.appendChild(td);
+                                    });
+                                    tbody.appendChild(tr);
+                                });
+                            });
+                    </script>
+                </div>
+
+                <div id="rightClaImg">
+                    <img src="Elements/Photos/Photo 4.jpeg" id="kingMoveImg">
+                </div>
+
             </div>
         </div>
 
@@ -56,10 +97,10 @@
 
             <div class="column">
                 <h1 class="infoTitle"> Liens utiles </h1>
-                <a href="https://pitch-cough-554.notion.site/FAQ-de-St-Jo-Chess-2625aa78495280b185b2fb10cf2eb13b?source=copy_link" class="info"> FAQ </a> <br>
-                <a href="https://lichess.org/fr" class="info"> Lichess </a> <br>
-                <a href="https://lichess.org/team/club-dechec-st-joseph" class="info"> St-Jo Chess sur Lichess </a> <br>
-                <a href="https://www.echecs.asso.fr" class="info"> Fédération Française des Échecs </a>
+                <a href="https://pitch-cough-554.notion.site/FAQ-de-St-Jo-Chess-2625aa78495280b185b2fb10cf2eb13b?source=copy_link" class="info" target="_blank"> FAQ </a> <br>
+                <a href="https://lichess.org/fr" class="info" target="_blank"> Lichess </a> <br>
+                <a href="https://lichess.org/team/club-dechec-st-joseph" class="info" target="_blank"> St-Jo Chess sur Lichess </a> <br>
+                <a href="https://www.echecs.asso.fr" class="info" target="_blank"> Fédération Française des Échecs </a>
             </div>
 
             <div id="columnFlex">
@@ -69,7 +110,7 @@
             <div class="column">
                 <h1 class="infoTitle"> Nous contacter </h1>
                 <p class="info"> Email : clubechecsstjoseph@gmail.com </p>
-                <p class="info"> Groupe WhatsApp : <a href="https://chat.whatsapp.com/CRFBUbAiLNf6QYgFMvHq5w?mode=ems_copy_c" id="infoMoins">Appuyez pour rejoindre</a> </p>
+                <p class="info"> Groupe WhatsApp : <a href="https://chat.whatsapp.com/CRFBUbAiLNf6QYgFMvHq5w?mode=ems_copy_c" id="infoMoins" target="_blank">Appuyez pour rejoindre</a> </p>
                 <p class="info"> Retrouvez-nous dans la vraie vie au BDE ! </p>
             </div>
         </div>
