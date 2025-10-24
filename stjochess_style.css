@@ -63,7 +63,7 @@ p {
 /* Classement */
 #classementPart {
     flex: 0.33;
-    background-color: tan;
+    background-color: tan !important;
     padding: 20px;
 }
 
