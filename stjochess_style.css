@@ -114,6 +114,8 @@ th, td {
 
 tbody, tr, td, th {
     border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
 }
 
 /* Informations */

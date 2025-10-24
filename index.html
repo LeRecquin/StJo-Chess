@@ -42,53 +42,39 @@
         <div id="classementPart">
             <h1 id="claTitle"> Classement </h1>
             <div>
-                <p id="claText">
-                    Le classement présent ci-dessous prend en compte un ELO propre à St-Jo Chess uniquement, 
-                    si vous remarquez un problème de données, merci de nous le signaler.
-                </p>
-            </div>
-            <div class="row">
+                <table id="classement">
+                    <thead>
+                        <tr>
+                            <th>Classement</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Classe</th>
+                            <th>ELO</th>
+                            <th>Identifiant</th>
+                        </tr>
+                    </thead>
 
-                <div>
-                    <table id="classement">
-                        <thead>
-                            <tr>
-                                <th>Classement</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Classe</th>
-                                <th>ELO</th>
-                                <th>Identifiant</th>
-                            </tr>
-                        </thead>
+                    <tbody>
+                    </tbody>
+                </table>
 
-                        <tbody>
-                        </tbody>
-                    </table>
-
-                    <script>
-                        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTbfd7L2_SRuHQcYSV_u2ZPEDqCVyFbsLFzE-mSpIaSQrcxd4p5k4WSbHWJEoTighkq8F_gQvuyHWeR/pub?gid=0&single=true&output=csv")
-                            .then(response => response.text())
-                            .then(csv => {
-                                const rows = csv.split("\n").map(r => r.split(","));
-                                const tbody = document.querySelector("#classement tbody");
-                                rows.slice(1).forEach(r => {
-                                    const tr = document.createElement("tr");
-                                    r.forEach(c => {
-                                        const td = document.createElement("td");
-                                        td.textContent = c;
-                                        tr.appendChild(td);
-                                    });
-                                    tbody.appendChild(tr);
+                <script>
+                    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTbfd7L2_SRuHQcYSV_u2ZPEDqCVyFbsLFzE-mSpIaSQrcxd4p5k4WSbHWJEoTighkq8F_gQvuyHWeR/pub?gid=0&single=true&output=csv")
+                        .then(response => response.text())
+                        .then(csv => {
+                            const rows = csv.split("\n").map(r => r.split(","));
+                            const tbody = document.querySelector("#classement tbody");
+                            rows.slice(1).forEach(r => {
+                                const tr = document.createElement("tr");
+                                r.forEach(c => {
+                                    const td = document.createElement("td");
+                                    td.textContent = c;
+                                    tr.appendChild(td);
                                 });
+                                tbody.appendChild(tr);
                             });
-                    </script>
-                </div>
-
-                <div id="rightClaImg">
-                    <img src="Elements/Photos/Photo 4.jpeg" id="kingMoveImg">
-                </div>
-
+                        });
+                </script>
             </div>
         </div>
 
