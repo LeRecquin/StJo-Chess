@@ -156,6 +156,13 @@ p {
     padding: 4vw;
 }
 
+#ClubMember {
+    color: rgb(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 1.5vw;
+
+}
+
 #claTitle {
     color: black;
     padding-bottom: 3vw;
