@@ -197,9 +197,10 @@ tbody, tr, td, th {
     font-size: 1vw;
 }
 
-tbody tr:nth-child(event){
-    background-color: #b09076;
+table tbody tr:nth-child(even) {
+    background-color: #b09076 !important;
 }
+
 
 /* Informations */
 #informations {
