@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <link rel="stylesheet" href="stjochess_style.css">
+        <link rel="icon" href="Elements/Renard Couronné StJo.png">
+        <meta charset="UTF-8">
+        <title> St-Jo Chess </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header>
+            <img id="banner" src="Elements/Banner/StJoChessBanner.png">
+        </header>
+
+        <div id="presentation">
+            <h1 id="preTitle"> Presentation </h1>
+
+            <div class="row"> 
+                <img src="Elements/Photos/Photo 1.jpeg" class="roundImage">
+                <div>
+                    <p id="importantQuote"> " Aux échecs comme dans la vie : chaque coup compte "</p>
+                    <p id="desc"> 
+                        Le club d'échecs de Saint-Joseph a été mis en place en 2022 <br>
+                        par un groupe de passionnés anonymes, avec, à l'origine, seulement <br>
+                        2 sets de jeux et des plateaux incrustés dans les bancs en béton <br>
+                        de la cour. Il a ensuite évolué, passant de 2 joueurs à plus de <br>
+                        30 les jours de tournoi en 2025 ! Vous aurez par ailleurs l'occasion <br>
+                        sur ce site de vous inscrire à ces tournois semestriels et de consulter <br>
+                        votre classement actuel, basé sur un ELO propre au St-Jo Chess.
+                    </p>
+                </div>
+            </div> 
+
+        </div>
+
+        <div id="classementPart">
+            <h1 id="claTitle"> Classement </h1>
+            <div>
+                <table id="classement">
+                    <thead>
+                        <tr>
+                            <th>Classement</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Classe</th>
+                            <th>ELO</th>
+                            <th>Identifiant</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <script>
+                    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTbfd7L2_SRuHQcYSV_u2ZPEDqCVyFbsLFzE-mSpIaSQrcxd4p5k4WSbHWJEoTighkq8F_gQvuyHWeR/pub?gid=0&single=true&output=csv")
+                        .then(response => response.text())
+                        .then(csv => {
+                            const rows = csv.split("\n").map(r => r.split(","));
+                            const tbody = document.querySelector("#classement tbody");
+                            rows.slice(1).forEach(r => {
+                                const tr = document.createElement("tr");
+                                r.forEach(c => {
+                                    const td = document.createElement("td");
+                                    td.textContent = c;
+                                    tr.appendChild(td);
+                                });
+                                tbody.appendChild(tr);
+                            });
+                        });
+                </script>
+            </div>
+        </div>
+
+        <div id="informations">
+
+            <div class="column">
+                <h1 class="infoTitle"> Liens utiles </h1>
+                <a href="https://pitch-cough-554.notion.site/FAQ-de-St-Jo-Chess-2625aa78495280b185b2fb10cf2eb13b?source=copy_link" class="info" target="_blank"> FAQ </a> <br>
+                <a href="https://lichess.org/fr" class="info" target="_blank"> Lichess </a> <br>
+                <a href="https://lichess.org/team/club-dechec-st-joseph" class="info" target="_blank"> St-Jo Chess sur Lichess </a> <br>
+                <a href="https://www.echecs.asso.fr" class="info" target="_blank"> Fédération Française des Échecs </a>
+            </div>
+
+            <div id="columnFlex">
+                <img src="Elements/Fall of the King.png" id="fallOfTheKing">
+            </div>
+
+            <div class="column">
+                <h1 class="infoTitle"> Nous contacter </h1>
+                <p class="info"> Email : clubechecsstjoseph@gmail.com </p>
+                <p class="info"> Groupe WhatsApp : <a href="https://chat.whatsapp.com/CRFBUbAiLNf6QYgFMvHq5w?mode=ems_copy_c" id="infoMoins" target="_blank">Appuyez pour rejoindre</a> </p>
+                <p class="info"> Retrouvez-nous dans la vraie vie au BDE ! </p>
+            </div>
+        </div>
+
+    </body>
+</html>
